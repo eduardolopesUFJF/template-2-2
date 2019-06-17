@@ -7,9 +7,9 @@ using System;
 
 namespace Template22.Api.Controllers
 {
-    [Produces("application/json")]
     [Route("api/Usuario")]
-    public class UsuarioController : Controller
+    [ApiController]
+    public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
 
@@ -17,7 +17,7 @@ namespace Template22.Api.Controllers
         {
             _usuarioService = usuarioService;
         }
-
+       
         [HttpPost]
         public IActionResult Post([FromBody] UsuarioVM usuarioVM)
         {

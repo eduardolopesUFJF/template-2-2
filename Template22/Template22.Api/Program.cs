@@ -7,14 +7,10 @@ namespace Template22.Api
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                //.UseKestrel()
-                .UseStartup<Startup>()
-                //.UseUrls("http://0.0.0.0:7079")
-                .Build();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();       
     }
 }
