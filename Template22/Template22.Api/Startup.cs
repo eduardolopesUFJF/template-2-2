@@ -8,6 +8,9 @@ using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Template22.Api.AutoMapper;
+using System;
+using System.Reflection;
 
 namespace Template22.Api
 {
@@ -30,14 +33,17 @@ namespace Template22.Api
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            
+            services.AddAutoMapper();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
             
-            services.AddAutoMapper();
+            
+    
             services.AddDIConfiguration();
             services.AddCors(options =>
             {
