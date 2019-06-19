@@ -12,22 +12,23 @@ namespace Template22.Api.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IMapper _mapper;
 
-
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
         {
-            _usuarioService = usuarioService;            
+            _usuarioService = usuarioService;
+            _mapper = mapper;
         }
        
         [HttpPost]
-        public IActionResult Post([FromBody] UsuarioVM usuarioVM)
+        public IActionResult Post(UsuarioVM usuarioVM)
         {
             try
-            { 
-                Usuario usuario = Mapper.Map<Usuario>(usuarioVM);
+            {
+                Usuario usuario = _mapper.Map<Usuario>(usuarioVM);                
                 _usuarioService.InserirUsuario(usuario);
 
-                return Ok(true);
+                return Ok(usuario);
             }
             catch (Exception ex)
             {

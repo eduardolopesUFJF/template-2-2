@@ -34,7 +34,7 @@ namespace Template22.Api
             });
 
             
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(Startup));
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddJsonOptions(options =>
             {
