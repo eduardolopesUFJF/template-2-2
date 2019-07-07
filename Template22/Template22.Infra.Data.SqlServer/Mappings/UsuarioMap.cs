@@ -10,13 +10,8 @@ namespace Template22.Infra.Data.SqlServer.Mappings
         {
             builder.ToTable("Usuario");
 
-            builder.Property(p => p.Email)
-                .HasColumnType("varchar(100)")
-                .IsRequired(true);
-
             builder.Property(p => p.Nome)
-                .HasColumnType("varchar(100)")
-                .IsRequired(true);
+                .HasColumnName("nome");
         }
     }
 }

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Template22.Domain.SharedRoot.Repository
+namespace Template22.Domain.SharedRoot.Service.Interface
 {
-    public interface IBaseRepository<TEntity> where TEntity : class
+    public interface IBaseService<TEntity> where TEntity : class
     {
         void Adicionar(TEntity entity);
-        void Atualizar(TEntity t);
+        void Atualizar(TEntity entity);
 
         TEntity BuscarPorId(int id);
         ICollection<TEntity> BuscarTodos();
         ICollection<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate);
+
     }
 }

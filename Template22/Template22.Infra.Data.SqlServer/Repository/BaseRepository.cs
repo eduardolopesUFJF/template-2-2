@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Template22.Domain;
+using Template22.Domain.SharedRoot.Entity;
 using Template22.Domain.SharedRoot.Repository;
 using Template22.Infra.Data.SqlServer.Context;
 
@@ -25,6 +25,13 @@ namespace Template22.Infra.Data.SqlServer.Repository
             DbSet.Add(entity);
         }
 
+        public void Atualizar(TEntity entity)
+        {
+            var entityDB = DbSet.Find(entity.Id);
+            _context.Entry(entityDB).CurrentValues.SetValues(entity);
+            DbSet.Update(entityDB);
+        }
+
         public ICollection<TEntity> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.Where(predicate).ToList();
@@ -40,18 +47,5 @@ namespace Template22.Infra.Data.SqlServer.Repository
             return DbSet.ToList();
         }
 
-        public void Update(TEntity entity)
-        {
-            var entityDB = DbSet.Find(entity.Id);
-            _context.Entry(entityDB).CurrentValues.SetValues(entity);
-            DbSet.Update(entityDB);
-        }
-
-        public void UpdateCompose(TEntity entity, object[] chaves)
-        {
-            var entityDB = DbSet.Find(chaves);
-            _context.Entry(entityDB).CurrentValues.SetValues(entity);
-            DbSet.Update(entityDB);
-        }
     }
 }

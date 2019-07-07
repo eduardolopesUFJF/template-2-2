@@ -1,4 +1,4 @@
-﻿namespace Template22.Domain
+﻿namespace Template22.Domain.SharedRoot.Entity
 {
     public class EntityBase
     {
