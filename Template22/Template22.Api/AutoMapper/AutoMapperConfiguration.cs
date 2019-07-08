@@ -8,8 +8,8 @@ namespace Template22.Api.AutoMapper
         {
             return new MapperConfiguration(ps =>
             {
-                ps.AddProfile(new DomainToViewModelMappingProfile());
-                ps.AddProfile(new ViewModelToDomainMappingProfile());
+                ps.AddProfile(new DomainToDtoMappingProfile());
+                ps.AddProfile(new DtoToDomainMappingProfile());
             });
         }
     }

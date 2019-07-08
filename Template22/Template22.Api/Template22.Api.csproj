@@ -38,4 +38,8 @@
     <ProjectReference Include="..\Template22.Infra.Data.SqlServer\Template22.Infra.Data.SqlServer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="LOG\" />
+  </ItemGroup>
+
 </Project>

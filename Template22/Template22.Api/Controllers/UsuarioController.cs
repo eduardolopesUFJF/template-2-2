@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Template22.Api.ViewModels;
 using Template22.Domain.SharedRoot.Service.Interface;
 using Template22.Domain.UsuarioRoot;
+using Template22.Domain.UsuarioRoot.DTO;
 
 namespace Template22.Api.Controllers
 {
@@ -22,7 +22,7 @@ namespace Template22.Api.Controllers
         }
        
         [HttpPost]
-        public IActionResult Post(UsuarioVM usuarioVM)
+        public IActionResult Post(UsuarioDTO usuarioVM)
         {
             Usuario usuario = _mapper.Map<Usuario>(usuarioVM);
             _baseUsuarioService.Adicionar(usuario);
