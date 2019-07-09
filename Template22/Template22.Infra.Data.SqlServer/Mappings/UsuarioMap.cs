@@ -12,6 +12,12 @@ namespace Template22.Infra.Data.SqlServer.Mappings
 
             builder.Property(p => p.Nome)
                 .HasColumnName("nome");
+
+            builder.Property(p => p.PerfilId)
+                .HasColumnName("perfilId");
+
+            builder.Property(p => p.Email)
+                .HasColumnName("email_principal");
         }
     }
 }

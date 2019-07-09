@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 using Template22.Domain.UsuarioRoot;
 using Template22.Infra.Data.SqlServer.Mappings;
-using System.IO;
 
 namespace Template22.Infra.Data.SqlServer.Context
 {

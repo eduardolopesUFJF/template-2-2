@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Template22.Domain.SharedRoot.Service.Interface;
 using Template22.Domain.UsuarioRoot;
@@ -6,8 +7,8 @@ using Template22.Domain.UsuarioRoot.DTO;
 
 namespace Template22.Api.Controllers
 {
-    [Route("api/Usuario")]
     [ApiController]
+    [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
         private readonly IBaseService<Usuario> _baseUsuarioService;
@@ -20,7 +21,8 @@ namespace Template22.Api.Controllers
             _baseUsuarioService = baseUsuarioService;
             _mapper = mapper;
         }
-       
+
+        [Authorize("Bearer")]
         [HttpPost]
         public IActionResult Post(UsuarioDTO usuarioVM)
         {
@@ -30,6 +32,7 @@ namespace Template22.Api.Controllers
             return Ok(usuario);
         }
 
+        [Authorize("Bearer")]
         [HttpGet]
         public IActionResult GetAll()
         {
